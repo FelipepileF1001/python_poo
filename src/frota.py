@@ -1,9 +1,9 @@
 class Carro:
-    modelo : str
-    marca : str
-    cor : str
-    odometro : 0.0
-    motor_on : False
+    modelo: str
+    marca: str
+    cor: str
+    odometro: 0.0
+    motor_on: True
 
     def __init__(self, modelo : str, marca : str, cor : str,
                        odometro : float, motor : bool):

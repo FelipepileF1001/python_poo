@@ -22,27 +22,32 @@ def operar_carro(carro : Carro):
     print(carro)
 
 if __name__ == "__main__":
-    print('\nCadastre o primeiro carro')
-    nm_modelo = input('Digite o modelo: ')
-    nm_marca = input('Digite a marca: ')
-    nm_cor = input('Digite a cor: ')
 
-    carro1 = Carro(nm_modelo, nm_marca, nm_cor, 0, False)
+    print('\nPrimeiro carro')
+    nm_modelo = "X"
+    nm_marca = "X"
+    nm_cor = "X"
+    litros = 100000
+    consumo = 1
 
-    print('\nCadastre o segundo carro')
-    nm_modelo = input('Digite o modelo: ')
-    nm_marca = input('Digite a marca: ')
-    nm_cor = input('Digite a cor: ')
+    carro1 = Carro(nm_modelo, nm_marca, nm_cor, 0, True, litros, consumo)
 
-    carro2 = Carro(nm_modelo, nm_marca, nm_cor, 0, False)
+    print('Segundo carro')
+    nm_modelo = "Z"
+    nm_marca = "Z"
+    nm_cor = "Z"
+    litros = 100000
+    consumo = 1
+
+    carro2 = Carro(nm_modelo, nm_marca, nm_cor, 0, True, litros, consumo)
 
     '''
-    Controlando o carro até ele atingir 10000 Km
+    Controlando o carro até ele atingir 300 Km
     '''
-    while carro1.odometro < 600 and carro2.odometro < 600:
+    while carro1.odometro < 300 and carro2.odometro < 300 and (carro1.tanque < 0 or carro2.tanque):
         try:
             op = 0
-            while op not in (1,2):
+            while op not in (1, 2):
                 op = int(input("Qual carro [1 ou 2] : "))
 
             if op == 1:
@@ -50,12 +55,13 @@ if __name__ == "__main__":
             else:
                 operar_carro(carro2)
 
-            print('Infos atuais do carro')
+            print('\nInfos atuais do carro')
 
         except Exception as e:
             print("Erro!")
             print(e)
 
     carro1.desligar()
-    print(carro1)
+    carro2.desligar()
+    print(carro1 and carro2)
     print('Parar para trocar óleo!!!')

@@ -1,5 +1,5 @@
 from frota import *
-
+import pickle
 def operar_carro(carro : Carro):
 
     print('1- Ligar motor')
@@ -41,6 +41,16 @@ if __name__ == "__main__":
 
     carro2 = Carro(nm_modelo, nm_marca, nm_cor, 0, True, litros, consumo)
 
+    carros = {}
+    carros[id(carro1)] = carro1
+    carros[id(carro2)] = carro2
+
+    try:
+        with open('carros.pkl', 'wb') as arquivo:
+            pickle.dump(carros, arquivo)
+    except Exception as e:
+        print(e)
+
     '''
     Controlando o carro até ele atingir 300 Km
     '''
@@ -61,7 +71,4 @@ if __name__ == "__main__":
             print("Erro!")
             print(e)
 
-    carro1.desligar()
-    carro2.desligar()
-    print(carro1 and carro2)
     print('Parar para trocar óleo!!!')
